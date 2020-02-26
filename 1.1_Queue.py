@@ -22,7 +22,7 @@ class Queue:
 
     def enqueue(self, item):
         oldlast = self.last
-        self.last = None(item, None)
+        self.last = Node(item, None)
         if self.is_empty():
             self.first = self.last
         else:
