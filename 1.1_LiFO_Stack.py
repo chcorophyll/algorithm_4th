@@ -5,7 +5,7 @@ class ResizingArrayStack():
         self.item = item
 
     def _is_empty(self):
-        retrun (self.num == 0)
+        return (self.num == 0)
 
     def _size(self):
         return self.num
