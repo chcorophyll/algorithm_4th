@@ -39,3 +39,5 @@ if __name__ == "__main__":
     arr = [3, 2, 4, 1, 5, 7, 0]
     quick_sort(arr, 0, len(arr) - 1)
     print(arr)
+
+
