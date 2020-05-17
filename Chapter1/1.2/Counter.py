@@ -11,7 +11,7 @@ class Counter():
         return self.count
 
     def __str__(self):
-        return(str(self.count) + " " + self.name)
+        return str(self.count) + self.name
 
 
 if __name__ == "__main__":

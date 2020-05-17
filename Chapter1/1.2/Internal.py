@@ -1,3 +1,0 @@
-class Internal1D():
-
-    
