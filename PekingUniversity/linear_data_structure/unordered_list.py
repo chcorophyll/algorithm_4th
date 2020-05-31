@@ -46,3 +46,66 @@ class UnorderedList(object):
             self.head = current.get_next()
         else:
             previous.set_next(current.get_next())
+
+    def append(self, item):
+        current = self.head
+        previous = None
+        while current != None:
+            previous = current
+            current = current.get_next()
+        temp = Node(item)
+        if previous == None:
+            temp.set_next(current)
+            self.head = temp
+        else:
+            temp.set_next(current)
+            previous.set_next(temp)
+
+    def insert(self, item, index):
+        count = 0
+        current = self.head
+        previous = None
+        stop = False
+        while current != None and not stop:
+            if count > index:
+                stop = True
+            else:
+                count += 1
+                previous = current
+                current = current.get_next()
+        temp = Node(item)
+        if previous == None:
+            temp.get_next(current)
+            self.head = temp
+        else:
+            temp.set_next(current)
+            previous.set_next(temp)
+
+    def index(self, item):
+        count = 0
+        current = self.head
+        stop = False
+        while current != None and not stop:
+            if current.get_data() == item:
+                stop = True
+            else:
+                count += 1
+                current = current.get_next()
+        return count
+
+    def pop(self, index=0):
+        count = 0
+        current = self.head
+        previous = None
+        stop = False
+        while current != None and not stop:
+            if count == index:
+                stop = True
+            else:
+                count += 1
+                previous = current
+                current = current.get_next()
+        if previous == None:
+            self.head = current.get_next()
+        else:
+            previous.set_next(current.next())
