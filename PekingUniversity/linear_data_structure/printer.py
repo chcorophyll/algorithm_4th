@@ -49,6 +49,7 @@ def new_print_task():
     else:
         return False
 
+
 def simulation(num_seconds, pages_per_minute):
     lab_printer = Printer(pages_per_minute)
     print_queue = queue.Queue()

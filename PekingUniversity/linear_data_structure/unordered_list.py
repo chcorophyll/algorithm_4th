@@ -55,10 +55,10 @@ class UnorderedList(object):
             current = current.get_next()
         temp = Node(item)
         if previous == None:
-            temp.set_next(current)
+            # temp.set_next(current)
             self.head = temp
         else:
-            temp.set_next(current)
+            # temp.set_next(current)
             previous.set_next(temp)
 
     def insert(self, item, index):
