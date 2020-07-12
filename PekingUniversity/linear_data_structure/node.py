@@ -13,5 +13,5 @@ class Node(object):
     def set_data(self, new_data):
         self.data = new_data
 
-    def set_next(self, new_next):
+    def set_next(self, new_next=None):
         self.next = new_next

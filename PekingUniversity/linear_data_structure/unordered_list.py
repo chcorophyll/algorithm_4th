@@ -5,14 +5,19 @@ class UnorderedList(object):
 
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def is_empty(self):
         return self.head == None
 
     def add(self, item):
         temp = Node(item)
-        temp.set_next(self.head)
-        self.head = temp
+        if self.head == None:
+            self.tail = temp
+            self.head = temp
+        else:
+            temp.set_next(self.head)
+            self.head = temp
 
     def size(self):
         count = 0
@@ -47,19 +52,41 @@ class UnorderedList(object):
         else:
             previous.set_next(current.get_next())
 
+    # slow version
+    # def append(self, item):
+    #     current = self.head
+    #     previous = None
+    #     while current != None:
+    #         previous = current
+    #         current = current.get_next()
+    #     temp = Node(item)
+    #     if previous == None:
+    #         temp.set_next(current)
+    #         self.head = temp
+    #     else:
+    #         temp.set_next(current)
+    #         previous.set_next(temp)
+
+    # fast version
     def append(self, item):
-        current = self.head
-        previous = None
-        while current != None:
-            previous = current
-            current = current.get_next()
+        current = self.tail
         temp = Node(item)
+<<<<<<< HEAD
         if previous == None:
             # temp.set_next(current)
+=======
+        if self.head == None:
+>>>>>>> 8613131e9e6e7a2e838961c15268a3c2e3c83df0
             self.head = temp
+            self.tail = temp
         else:
+<<<<<<< HEAD
             # temp.set_next(current)
             previous.set_next(temp)
+=======
+            current.set_next(temp)
+            self.tail = temp
+>>>>>>> 8613131e9e6e7a2e838961c15268a3c2e3c83df0
 
     def insert(self, item, index):
         count = 0
@@ -67,7 +94,7 @@ class UnorderedList(object):
         previous = None
         stop = False
         while current != None and not stop:
-            if count > index:
+            if count == index:
                 stop = True
             else:
                 count += 1
