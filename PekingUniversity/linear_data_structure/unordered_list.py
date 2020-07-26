@@ -71,12 +71,22 @@ class UnorderedList(object):
     def append(self, item):
         current = self.tail
         temp = Node(item)
+<<<<<<< HEAD
+        if previous == None:
+            # temp.set_next(current)
+=======
         if self.head == None:
+>>>>>>> 8613131e9e6e7a2e838961c15268a3c2e3c83df0
             self.head = temp
             self.tail = temp
         else:
+<<<<<<< HEAD
+            # temp.set_next(current)
+            previous.set_next(temp)
+=======
             current.set_next(temp)
             self.tail = temp
+>>>>>>> 8613131e9e6e7a2e838961c15268a3c2e3c83df0
 
     def insert(self, item, index):
         count = 0
