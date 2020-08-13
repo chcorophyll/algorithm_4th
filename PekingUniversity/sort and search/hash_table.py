@@ -50,3 +50,28 @@ class HashTable(object):
 
     def __setitem__(self, key, value):
         return self.put(key, value)
+
+    def __len__(self):
+        count = 0
+        for item in self.data:
+            if not item:
+                count += 1
+        return count
+
+    def __contains__(self, item):
+        if self.get(item):
+            return True
+        else:
+            return False
+
+    def delete(self, key):
+        position = self.hash_function(key, len(self.slots))
+        found = False
+        while not self.slots[position] is None and not found:
+            if self.slots[position] == key:
+                found = True
+                self.slots[position] = None
+                self.data[position] = None
+
+    def __delete__(self, key):
+        self.delete()
