@@ -1,6 +1,6 @@
 import operator
 from ..linear_data_structure import stack
-from .tree import BinaryTree
+from .binary_tree import BinaryTree
 
 
 class ParseTree(object):
@@ -66,9 +66,9 @@ class ParseTree(object):
     def post_order(self, tree):
         if tree:
             if tree.get_left_child():
-                self.pre_order(tree.get_left_child())
+                self.post_order(tree.get_left_child())
             if tree.get_right_child():
-                self.pre_order(tree.get_right_child())
+                self.post_order(tree.get_right_child())
             print(tree.get_root)
 
     def in_order(self, tree):
