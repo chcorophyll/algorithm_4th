@@ -210,7 +210,7 @@ class BinarySearchTree(object):
                 else:
                     current_node.repalce_node_data(current_node.right_child.key,
                                                    current_node.right_child.payload,
-                                               current_node.right_child.left_child,
+                                                   current_node.right_child.left_child,
                                                    current_node.right_child.right_child)
 
 
