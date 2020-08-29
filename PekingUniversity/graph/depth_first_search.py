@@ -54,4 +54,60 @@ def knight_tour(n, path, u, limit):
     return done
 
 
+def order_by_avail(n):
+    residual_list = []
+    for v in n.get_connections():
+        if v.get_color == "white":
+            count = 0
+            for w in v.get_connections():
+                if w.get_color == "white":
+                    count += 1
+            residual_list.append((c, v))
+    residual_list.sort(key=lambda x: x[0])
+    return [y[1] for y in residual_list]
 
+
+def knight_tour_order(n, path, u, limit):
+    u.set_color("gray")
+    path.append(u)
+    if n < limit:
+        neighbor_list = order_by_avail(n)
+        i = 0
+        done = False
+        while i < len(neighbor_list) and not done:
+            if neighbor_list[i].get_color() == "white":
+                done = knight_tour(n+1, path, neighbor_list[i], limit)
+            i += 1
+        if not done:
+            path.pop()
+            u.set_color("white")
+    else:
+        done = True
+    return done
+
+
+class DFSGraph(Graph):
+
+    def __init__(self):
+        super().__init__()
+        self.time = 0
+
+    def dfs(self):
+        for vertex in self:
+            vertex.set_color("white")
+            vertex.set_pred(-1)
+        for vertex in self:
+            if vertex.get_color() == "white":
+                self.dfs_visit(vertex)
+
+    def dfs_visit(self, start_vertex):
+        start_vertex.set_color("gray")
+        self.time += 1
+        start_vertex.set_discovery(self.time)
+        for next_vertex in start_vertex.get_connections():
+            if next_vertex.get_color() == "white":
+                next_vertex.set_pred(start_vertex)
+                self.dfs_visit(next_vertex)
+        start_vertex.set_color("black")
+        self.time += 1
+        start_vertex.set_finish(self.time)
