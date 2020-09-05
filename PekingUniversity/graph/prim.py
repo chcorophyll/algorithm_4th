@@ -13,7 +13,7 @@ def prim(a_graph, start):
     while not pq.is_empty():
         current_vertex = pq.del_min()
         for next_vertex in current_vertex.get_connections():
-            new_cost = current_vertex.get_weight(next_vertex) + current_vertex.get_distance()
+            new_cost = current_vertex.get_weight(next_vertex)
             if next_vertex in pq and new_cost < next_vertex.get_distance():
                 next_vertex.set_pred(current_vertex)
                 next_vertex.set_distance(new_cost)
