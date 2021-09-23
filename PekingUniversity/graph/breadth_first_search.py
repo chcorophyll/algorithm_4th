@@ -2,6 +2,7 @@ import sys
 import os
 from ..linear_data_structure import queue
 
+
 class Vertex(object):
 
     def __init__(self, num):

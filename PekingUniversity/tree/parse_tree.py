@@ -79,6 +79,53 @@ class ParseTree(object):
             if tree.get_right_child():
                 self.pre_order(tree.get_right_child())
 
+    # 迭代遍历
+    def pre_order(self, tree):
+        result = []
+        traverse_stack = []
+        while tree or stack:
+            while tree:
+                traverse_stack.append(tree)
+                result.append(tree.get_root())
+                tree = tree.get_left_child()
+            tree = traverse_stack.pop()
+            tree = tree.get_right_child()
+        return result
+
+
+    def in_order(self, tree):
+        result = []
+        traverse_stack = []
+        while tree or traverse_stack:
+            while tree:
+                traverse_stack.append(tree)
+                tree = tree.get_left_child()
+            tree = traverse_stack.pop()
+            result.append(tree.get_root())
+            tree = tree.get_right_child()
+        return result
+
+    def post_order(self, tree):
+        result = []
+        traverse_stack = []
+        mark = None
+        while tree or traverse_stack:
+            while tree:
+                traverse_stack.append(tree)
+                tree = tree.get_left_child()
+            tree = traverse_stack.pop()
+            if not tree.get_right_child() or tree.get_right_child() == mark:
+                result.append(tree.get_root())
+                mark = tree
+                tree = None
+            else:
+                traverse_stack.append(tree)
+                tree = tree.get_right_child()
+        return result
+
+
+
+
     def print_expression(self, parse_tree):
         string_val = ""
         if parse_tree:
